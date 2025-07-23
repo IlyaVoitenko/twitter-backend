@@ -1,9 +1,10 @@
-const mongoose = require("mongoose");
-const app = require("./app");
+import mongoose from "mongoose";
+import app from "./app";
 
 const { PORT, DB_HOST } = process.env;
+
 if (!PORT || !DB_HOST) {
-  console.error("Environment variables PORT and DB_HOST must be set.");
+  console.error("Environment variables error");
   process.exit(1);
 }
 mongoose
