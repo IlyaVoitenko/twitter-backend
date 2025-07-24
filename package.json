@@ -7,8 +7,9 @@
     "build": "rimraf ./build && tsc",
     "dev": "nodemon",
     "prod": "yarn build && node build/server.js",
-    "eslint": "eslint ./src",
-    "eslint-fix": "eslint ./src --fix"
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "prepare": "husky"
   },
   "author": "",
   "license": "ISC",
@@ -30,9 +31,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",
     "eslint": "^9.31.0",
+    "husky": "^9.1.7",
     "nodemon": "^3.1.10",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
