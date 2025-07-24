@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import app from "./app";
+import app from "./app.js";
 
 const { PORT, DB_HOST } = process.env;
 

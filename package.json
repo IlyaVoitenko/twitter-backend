@@ -1,9 +1,14 @@
 {
   "name": "twitter-backend",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "nodemon server.ts"
+    "build": "rimraf ./build && tsc",
+    "dev": "nodemon",
+    "prod": "yarn build && node build/server.js",
+    "eslint": "eslint ./src",
+    "eslint-fix": "eslint ./src --fix"
   },
   "author": "",
   "license": "ISC",
@@ -21,13 +26,17 @@
     "morgan": "^1.10.1",
     "nanoid": "^5.1.5",
     "npm": "^11.4.2",
-    "run": "^1.5.0",
-    "ts-node": "^10.9.2"
+    "run": "^1.5.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
     "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",
+    "eslint": "^9.31.0",
     "nodemon": "^3.1.10",
-    "typescript": "^5.8.3"
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0"
   }
 }
