@@ -5,7 +5,7 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({ origin: [process.env.LOCAL_HOST] as string[] }));
+app.use(cors({ origin: [process.env.LOCAL_WEB_HOST] as string[] }));
 app.use(express.json());
 
 app.use((req, res) => {
