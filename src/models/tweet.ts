@@ -1,4 +1,5 @@
 import mongoose, { Schema, model, Document } from "mongoose";
+import Joi from "joi";
 
 export interface ITweet extends Document {
   content: string;
@@ -46,7 +47,7 @@ export const tweetSchema = new Schema<ITweet>(
     },
     images: [
       {
-        url: { type: String, required: true },
+        url: { type: String },
         public_id: String,
       },
     ],
@@ -77,4 +78,17 @@ export const tweetSchema = new Schema<ITweet>(
   { versionKey: false, timestamps: true }
 );
 
+export const addNewTweet = Joi.object({
+  content: {
+    type: String,
+    required: true,
+    maxlength: 280,
+  },
+  images: [
+    {
+      url: { type: String },
+      public_id: String,
+    },
+  ],
+});
 export const Tweet = model("tweet", tweetSchema);

@@ -1,6 +1,6 @@
 import mongoose, { Schema, model, Document } from "mongoose";
 import handleMongooseError from "../helper/handleMongooseError.js";
-// import Joi from "joi";
+import Joi from "joi";
 
 export interface ITwitterUser extends Document {
   name: string;
@@ -29,10 +29,16 @@ export const twitterUserSchema = new Schema<ITwitterUser>({
   followers: [{ type: Schema.Types.ObjectId, ref: "User" }],
   following: [{ type: Schema.Types.ObjectId, ref: "User" }],
   tweets: [{ type: Schema.Types.ObjectId, ref: "Tweet" }],
-
   provider: { type: String },
 });
-
+export const createTwitterAccount = Joi.object({
+  name: { type: String, required: true },
+  email: { type: String, unique: true, sparse: true },
+  username: { type: String, unique: true, required: true },
+  image: { type: String },
+  bio: { type: String, default: "" },
+  website: { type: String, default: "" },
+});
 twitterUserSchema.post("save", handleMongooseError);
 
 export const TwitterUser = model("user", twitterUserSchema);
